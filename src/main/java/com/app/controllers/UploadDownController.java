@@ -6,12 +6,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.services.DownloadService;
 import com.app.services.UploadService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @RestController
-public class UploadController {
+public class UploadDownController {
 	@Autowired
-	UploadService service;
+	UploadService uploadService;
+	
+	@Autowired
+	DownloadService downloadService;
 	
 	/**
 	 * ファイルアップロードAPI
@@ -19,6 +25,16 @@ public class UploadController {
 	 */
 	@PostMapping(value = "/uploadFile")
 	public void uploadFile(@RequestParam("file") MultipartFile file) {
-		service.fileUpload(file);
+		uploadService.fileUpload(file);
 	}
+	
+	/**
+	 * ファイルアップロードAPI
+	 * @param file アップロードしたファイル
+	 */
+	@PostMapping(value = "/downloadFile")
+	public void downloadFile(HttpServletResponse response) {
+		downloadService.fileDownload(response);
+	}
+	
 }

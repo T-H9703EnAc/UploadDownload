@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.6.3.js"
+		integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	
+    <button type="button" id="btn">ダウンロード</button>
+	
+	<dialog>
+		<p>ダウンロードしますか？</p>
+		<button id="yes">はい</button>
+		<button id="no">いいえ</button>
+	</dialog>
+	<script th:src="@{/js/download.js}"></script>
+</body>
+
+</html>
